@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import constant.Constant;
 
-public class HomePage extends GeneralPage {
+public class BooksHomePage extends GeneralPage {
 
 	private By usernameLabel = By.id("userName-value");
 	

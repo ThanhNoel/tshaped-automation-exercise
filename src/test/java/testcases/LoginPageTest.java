@@ -1,22 +1,23 @@
 package testcases;
 
-import static org.testng.Assert.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import constant.Constant;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import pageobjects.HomePage;
-import pageobjects.LoginPage;
+import pageobjects.BooksHomePage;
+import pageobjects.BooksLoginPage;
 
 public class LoginPageTest {
 	
-	@BeforeMethod
+	@BeforeEach
 	public void beforeMethod() {
 		WebDriverManager.chromedriver().browserVersion(null).setup();
 		Constant.WEBDRIVER = new ChromeDriver();
@@ -25,18 +26,18 @@ public class LoginPageTest {
 		Constant.WEBDRIVER.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
-	@AfterMethod
+	@AfterEach
 	public void afterMethod() {
 		Constant.WEBDRIVER.quit();
 	}
 	
 	@Test
 	public void loginTest() {
-		HomePage homePage = new HomePage();
+		BooksHomePage homePage = new BooksHomePage();
 		homePage.open();
 		homePage.gotoLoginPage();
 		
-		LoginPage loginPage = new LoginPage();
+		BooksLoginPage loginPage = new BooksLoginPage();
 		loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 		
 		String headerText = homePage.getUsernameLabelValue();

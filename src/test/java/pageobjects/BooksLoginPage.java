@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import constant.Constant;
 
-public class LoginPage extends GeneralPage {
+public class BooksLoginPage extends GeneralPage {
 	
 	private By usernameTextBox = By.id("userName");
 	private By passwordTextBox = By.id("password");
